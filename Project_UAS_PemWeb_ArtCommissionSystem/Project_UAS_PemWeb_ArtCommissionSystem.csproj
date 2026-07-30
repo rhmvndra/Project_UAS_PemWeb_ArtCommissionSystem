@@ -93,6 +93,7 @@
     <Content Include="Pages\DashboardAdmin.aspx" />
     <Content Include="Pages\FormPesanan.aspx" />
     <Content Include="Pages\KelolaPaket.aspx" />
+    <Content Include="Pages\KelolaPesanan.aspx" />
     <Content Include="Pages\Login.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -124,6 +125,13 @@
     </Compile>
     <Compile Include="Pages\KelolaPaket.aspx.designer.cs">
       <DependentUpon>KelolaPaket.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\KelolaPesanan.aspx.cs">
+      <DependentUpon>KelolaPesanan.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\KelolaPesanan.aspx.designer.cs">
+      <DependentUpon>KelolaPesanan.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
