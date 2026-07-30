@@ -46,7 +46,7 @@ namespace Project_UAS_PemWeb_ArtCommissionSystem.Pages
                 }
                 catch (Exception ex)
                 {
-                    ClientScript.RegisterStartupScript(this.GetType(), "alert", $"alert('Error Koneksi: {ex.Message}');", true);
+                    Response.Redirect("~/Pages/DashboardAdmin.aspx");
                 }
             }
         }
