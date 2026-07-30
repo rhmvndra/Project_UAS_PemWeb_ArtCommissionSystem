@@ -10,7 +10,7 @@
 </head>
 <body class="bg-light">
     <form id="form1" runat="server">
-        <!-- Navbar -->
+
         <nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow-sm">
             <div class="container-fluid">
                 <a class="navbar-brand fw-bold" href="DashboardAdmin.aspx">Art Commission Admin</a>
@@ -26,7 +26,6 @@
                     <h4 class="card-title text-primary mb-4">Daftar Pesanan Masuk</h4>
                     
                     <div class="table-responsive">
-                        <!-- GridView untuk menampilkan data JOIN dari tabel Pesanan dan Paket_Layanan -->
                         <asp:GridView ID="gvPesanan" runat="server" CssClass="table table-bordered table-hover align-middle"
                             AutoGenerateColumns="False" DataKeyNames="id_pesanan"
                             OnRowCommand="gvPesanan_RowCommand">
@@ -38,7 +37,6 @@
                                 <asp:BoundField DataField="nama_paket" HeaderText="Layanan" />
                                 <asp:BoundField DataField="catatan" HeaderText="Catatan" />
                                 
-                                <!-- Template untuk Status agar warnanya bisa disesuaikan -->
                                 <asp:TemplateField HeaderText="Status">
                                     <ItemTemplate>
                                         <span class="badge bg-<%# Eval("status").ToString() == "Pending" ? "danger" : (Eval("status").ToString() == "Diproses" ? "warning text-dark" : "success") %>">
@@ -47,7 +45,6 @@
                                     </ItemTemplate>
                                 </asp:TemplateField>
                                 
-                                <!-- Tombol Aksi Dinamis -->
                                 <asp:TemplateField HeaderText="Aksi">
                                     <ItemTemplate>
                                         <asp:Button ID="btnProses" runat="server" Text="Terima Pesanan" CommandName="ProsesPesanan" CommandArgument='<%# Eval("id_pesanan") %>' CssClass="btn btn-sm btn-outline-warning mb-1" Visible='<%# Eval("status").ToString() == "Pending" %>' />
