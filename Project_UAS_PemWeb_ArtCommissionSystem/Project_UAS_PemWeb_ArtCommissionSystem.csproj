@@ -89,18 +89,34 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Default.aspx" />
     <Content Include="Pages\DashboardAdmin.aspx" />
+    <Content Include="Pages\FormPesanan.aspx" />
     <Content Include="Pages\KelolaPaket.aspx" />
     <Content Include="Pages\Login.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Pages\DashboardAdmin.aspx.cs">
       <DependentUpon>DashboardAdmin.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Pages\DashboardAdmin.aspx.designer.cs">
       <DependentUpon>DashboardAdmin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\FormPesanan.aspx.cs">
+      <DependentUpon>FormPesanan.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\FormPesanan.aspx.designer.cs">
+      <DependentUpon>FormPesanan.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\KelolaPaket.aspx.cs">
       <DependentUpon>KelolaPaket.aspx</DependentUpon>
