@@ -1,49 +1,63 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="Project_UAS_PemWeb_ArtCommissionSystem.Pages.Login" %>
+﻿using System;
+using System.Configuration;
+using Npgsql;
 
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Login - Art Commission System</title>
-    <!-- Memasukkan Bootstrap CSS CDN untuk tampilan responsif -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
-</head>
-<body class="bg-light d-flex align-items-center py-5" style="height: 100vh;">
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-5">
-                <div class="card shadow-sm border-0 rounded-4">
-                    <div class="card-body p-4 p-md-5">
-                        <h2 class="text-center mb-4 fw-bold text-primary">Art Commission</h2>
-                        <p class="text-center text-muted mb-4">Silakan masuk ke akun Anda</p>
-                        
-                        <form id="form1" runat="server">
-                            <div class="mb-3">
-                                <label for="txtUsername" class="form-label">Username</label>
-                                <asp:TextBox ID="txtUsername" runat="server" CssClass="form-control" placeholder="Masukkan username"></asp:TextBox>
-                            </div>
-                            
-                            <div class="mb-3">
-                                <label for="txtPassword" class="form-label">Password</label>
-                                <asp:TextBox ID="txtPassword" runat="server" TextMode="Password" CssClass="form-control" placeholder="Masukkan password"></asp:TextBox>
-                            </div>
+namespace Project_UAS_PemWeb_ArtCommissionSystem.Pages
+{
+    public partial class Login : System.Web.UI.Page
+    {
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            // Jika sudah ada sesi (sudah login), bisa diarahkan ke dashboard
+        }
 
-                            <div class="d-grid gap-2 mt-4">
-                                <asp:Button ID="btnLogin" runat="server" Text="Masuk" CssClass="btn btn-primary btn-lg" OnClick="btnLogin_Click" />
-                            </div>
+        protected void btnLogin_Click(object sender, EventArgs e)
+        {
+            // Mengambil connection string dari Web.config
+            string connString = ConfigurationManager.ConnectionStrings["ArtCommissionDB"].ConnectionString;
+            
+            string username = txtUsername.Text.Trim();
+            string password = txtPassword.Text.Trim();
 
-                            <div class="text-center mt-3">
-                                <small class="text-muted">Belum punya akun? Hubungi Admin.</small>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+            using (NpgsqlConnection conn = new NpgsqlConnection(connString))
+            {
+                try
+                {
+                    conn.Open();
+                    // Query untuk mengecek kecocokan data
+                    string query = "SELECT role FROM Users WHERE username = @username AND password_hash = @password";
+                    
+                    using (NpgsqlCommand cmd = new NpgsqlCommand(query, conn))
+                    {
+                        // Menggunakan parameter untuk mencegah SQL Injection
+                        cmd.Parameters.AddWithValue("@username", username);
+                        cmd.Parameters.AddWithValue("@password", password);
 
-    <!-- Bootstrap JS Bundle -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-</body>
-</html>
+                        object result = cmd.ExecuteScalar();
+
+                        if (result != null)
+                        {
+                            // Jika berhasil login, simpan info di Session
+                            string role = result.ToString();
+                            Session["Username"] = username;
+                            Session["Role"] = role;
+
+                            // Menampilkan pesan sukses sementara (nanti bisa diganti Response.Redirect)
+                            ClientScript.RegisterStartupScript(this.GetType(), "alert", $"alert('Login Berhasil! Selamat datang, {role}.');", true);
+                        }
+                        else
+                        {
+                            // Jika username/password salah
+                            ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('Username atau Password salah!');", true);
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    // Menampilkan pesan error jika database gagal terhubung
+                    ClientScript.RegisterStartupScript(this.GetType(), "alert", $"alert('Error Koneksi: {ex.Message}');", true);
+                }
+            }
+        }
+    }
+}
