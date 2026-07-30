@@ -39,7 +39,7 @@
                 <div class="col-md-3 mb-4">
                     <div class="list-group shadow-sm">
                         <a href="#" class="list-group-item list-group-item-action active">Dashboard Utama</a>
-                        <a href="KelolaPaket.aspx class="list-group-item list-group-item-action">Kelola Paket Layanan</a>
+                        <a href="KelolaPaket.aspx" class="list-group-item list-group-item-action">Kelola Paket Layanan</a>
                         <a href="#" class="list-group-item list-group-item-action">Daftar Pesanan (Transaksi)</a>
                         <a href="#" class="list-group-item list-group-item-action">Laporan Pendapatan</a>
                     </div>
