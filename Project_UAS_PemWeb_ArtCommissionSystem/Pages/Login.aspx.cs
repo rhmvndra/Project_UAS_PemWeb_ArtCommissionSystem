@@ -36,7 +36,9 @@ namespace Project_UAS_PemWeb_ArtCommissionSystem.Pages
                             Session["Username"] = username;
                             Session["Role"] = role;
 
-                            ClientScript.RegisterStartupScript(this.GetType(), "alert", $"alert('Login Berhasil! Selamat datang, {role}.');", true);
+                            // Posisi yang benar: Jika login sukses, langsung pindah ke Dashboard
+                            Response.Redirect("~/Pages/DashboardAdmin.aspx", false);
+                            Context.ApplicationInstance.CompleteRequest();
                         }
                         else
                         {
@@ -46,7 +48,8 @@ namespace Project_UAS_PemWeb_ArtCommissionSystem.Pages
                 }
                 catch (Exception ex)
                 {
-                    Response.Redirect("~/Pages/DashboardAdmin.aspx");
+                    // Posisi yang benar: Jika database error, tampilkan pesan error
+                    ClientScript.RegisterStartupScript(this.GetType(), "alert", $"alert('Error Koneksi: {ex.Message}');", true);
                 }
             }
         }
