@@ -18,14 +18,15 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-                    <ul class="navbar-nav">
+                    <ul class="navbar-nav align-items-center">
                         <li class="nav-item">
                             <span class="nav-link text-white me-3">
                                 Halo, <asp:Label ID="lblUsername" runat="server" Text="Admin" CssClass="fw-bold"></asp:Label>!
                             </span>
                         </li>
                         <li class="nav-item">
-                            <asp:Button ID="btnLogout" runat="server" Text="Logout" CssClass="btn btn-danger btn-sm mt-1" OnClick="btnLogout_Click" />
+                            <!-- Tombol diarahkan langsung ke file Logout.aspx -->
+                            <a href="Logout.aspx" class="btn btn-danger btn-sm">Logout</a>
                         </li>
                     </ul>
                 </div>
