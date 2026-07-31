@@ -15,6 +15,7 @@
             <div class="container">
                 <a class="navbar-brand fw-bold" href="Default.aspx">🎨 Art Studio</a>
                 <div class="d-flex">
+                    <a href="CekPesanan.aspx" class="btn btn-info btn-sm me-2 text-white">Cek Pesanan Saya</a>
                     <a href="Pages/Login.aspx" class="btn btn-outline-light btn-sm">Login Admin</a>
                 </div>
             </div>

@@ -41,7 +41,7 @@
                         <a href="#" class="list-group-item list-group-item-action active">Dashboard Utama</a>
                         <a href="KelolaPaket.aspx" class="list-group-item list-group-item-action">Kelola Paket Layanan</a>
                         <a href="KelolaPesanan.aspx" class="list-group-item list-group-item-action">Daftar Pesanan (Transaksi)</a>
-                        <a href="#" class="list-group-item list-group-item-action">Laporan Pendapatan</a>
+                        <a href="LaporanPendapatan.aspx" class="list-group-item list-group-item-action">Laporan Pendapatan</a>
                     </div>
                 </div>
 

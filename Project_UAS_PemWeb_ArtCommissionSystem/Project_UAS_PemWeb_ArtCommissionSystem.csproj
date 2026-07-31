@@ -89,15 +89,24 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="CekPesanan.aspx" />
     <Content Include="Default.aspx" />
     <Content Include="Pages\DashboardAdmin.aspx" />
     <Content Include="Pages\FormPesanan.aspx" />
     <Content Include="Pages\KelolaPaket.aspx" />
     <Content Include="Pages\KelolaPesanan.aspx" />
+    <Content Include="Pages\LaporanPendapatan.aspx" />
     <Content Include="Pages\Login.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CekPesanan.aspx.cs">
+      <DependentUpon>CekPesanan.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CekPesanan.aspx.designer.cs">
+      <DependentUpon>CekPesanan.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -132,6 +141,13 @@
     </Compile>
     <Compile Include="Pages\KelolaPesanan.aspx.designer.cs">
       <DependentUpon>KelolaPesanan.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\LaporanPendapatan.aspx.cs">
+      <DependentUpon>LaporanPendapatan.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\LaporanPendapatan.aspx.designer.cs">
+      <DependentUpon>LaporanPendapatan.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
